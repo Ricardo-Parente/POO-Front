@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartoon - Daily Challenge</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="user-profile" id="userProfile">
+            </div>
+    </header>
+
+    <div class="container">
+        <aside class="ranking-sidebar">
+            <h2>Ranking Semanal</h2>
+            <ul id="rankingList">
+                </ul>
+        </aside>
+
+        <div class="game">
+            <h1>Adivinhe o Desenho!</h1>
+            <p id="challengeDate"></p>
+            <img id="imagemDoJogo" src="" alt="Imagem do desafio" style="width: 400px; display: block; margin-top: 20px; margin-left: auto; margin-right: auto;">
+            <div class="frame-navigation" id="frameNavigation">
+                </div>
+            <input type="text" id="inputJogo" placeholder="Digite qual o desenho" list="suggestions">
+            <datalist id="suggestions"></datalist>
+            <button onclick="submitGuess()">Testar Desenho</button>
+            <p id="mensagem"></p>
+            <p id="remainingGuesses">Tentativas restantes: 5</p>
+            <ul id="listaJogos">
+                </ul>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="loginEmail">Email:</label>
+                <input type="email" id="loginEmail" required>
+                <label for="loginPassword">Senha:</label>
+                <input type="password" id="loginPassword" required>
+                <button type="submit">Entrar</button>
+                <p id="loginMessage" class="mensagem erro"></p>
+            </form>
+            <p>Não tem uma conta? <button onclick="showRegister()">Cadastre-se</button></p>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>Cadastro</h2>
+            <form id="registerForm">
+                <label for="registerName">Nome:</label>
+                <input type="text" id="registerName" required>
+                <label for="registerEmail">Email:</label>
+                <input type="email" id="registerEmail" required>
+                <label for="registerPassword">Senha:</label>
+                <input type="password" id="registerPassword" required>
+                <button type="submit">Registrar</button>
+                <p id="registerMessage" class="mensagem erro"></p>
+            </form>
+            <p>Já tem uma conta? <button onclick="showLogin()">Login</button></p>
+        </div>
+    </div>
+
+    <script src="script2.js"></script>
+</body>
+</html>
