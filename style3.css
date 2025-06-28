@@ -99,12 +99,20 @@ p {
 }
 
 .mensagem.erro {
-    color: #A34743;
+    color: #A34743; /* Cor para mensagens de erro */
+    font-weight: bold;
 }
 
 .mensagem.sucesso {
-    color: #28A745;
+    color: #28A745; /* Cor para mensagens de sucesso */
+    font-weight: bold;
 }
+
+.mensagem.info {
+    color: #331F19; /* Cor para mensagens informativas ou neutras */
+    font-weight: normal;
+}
+
 
 button {
     background-color: #798252;
@@ -123,7 +131,28 @@ button:hover {
     color: #504e4d;
 }
 
-input[type="text"] {
+/* Estilo para botões que parecem links (ex: "Esqueceu sua senha?") */
+.link-button {
+    background: none;
+    border: none;
+    color: #798252; /* Cor de link */
+    padding: 0;
+    margin-top: 5px;
+    font-size: 0.9em;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.link-button:hover {
+    color: #504e4d;
+    background: none;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
     padding: 10px;
     border: 1px solid #8B7D70;
     border-radius: 5px;
@@ -134,6 +163,17 @@ input[type="text"] {
     color: #331F19;
     background-color: #F4F0EA;
 }
+
+/* Ajuste para inputs dentro dos modais */
+.modal-content input[type="text"],
+.modal-content input[type="email"],
+.modal-content input[type="password"] {
+    width: calc(100% - 22px); /* Full width within modal content */
+    max-width: none; /* Remove max-width constraint for modal inputs */
+    margin-top: 0; /* Adjust margin if needed, usually managed by gap on form */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
 
 ul {
     list-style: none;
@@ -181,36 +221,42 @@ ul li {
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 1000; /* Sit on top, higher than other content */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.6); /* Black w/ more opacity */
     justify-content: center;
     align-items: center;
+    /* Adicionado para centralizar corretamente o modal com display: flex */
+    animation: fadeIn 0.3s ease-out; /* Adiciona uma animação simples */
 }
 
 .modal-content {
     background-color: #CBBBA7;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
+    /* Removido 'margin: 15% auto;' para usar flexbox para centralização */
+    padding: 25px; /* Aumentado padding */
     border: 1px solid #8B7D70;
-    border-radius: 8px;
-    width: 80%; /* Could be more responsive */
-    max-width: 400px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; /* Borda mais arredondada */
+    width: 90%; /* Mais responsivo em telas pequenas */
+    max-width: 450px; /* Aumentado max-width */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra mais pronunciada */
     position: relative;
     color: #331F19;
+    display: flex; /* Para centralizar os elementos internos facilmente */
+    flex-direction: column;
+    gap: 15px; /* Espaçamento entre os elementos do modal */
+    animation: slideIn 0.3s ease-out; /* Adiciona uma animação de entrada */
 }
 
 .close-button {
     color: #331F19;
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 28px;
+    top: 12px; /* Ajuste a posição */
+    right: 15px; /* Ajuste a posição */
+    font-size: 30px; /* Tamanho maior */
     font-weight: bold;
     cursor: pointer;
 }
@@ -219,40 +265,42 @@ ul li {
 .close-button:focus {
     color: black;
     text-decoration: none;
-    cursor: pointer;
 }
 
 .modal-content h2 {
     color: #331F19;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Ajustado para melhor espaçamento com o gap */
+    font-size: 1.8em; /* Fonte um pouco maior */
 }
 
 .modal-content form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px; /* Ajustado espaçamento */
 }
 
 .modal-content label {
     font-weight: bold;
+    color: #504e4d; /* Cor um pouco mais escura para labels */
+    margin-bottom: -5px; /* Aproxima label do input */
 }
 
-.modal-content input[type="email"],
-.modal-content input[type="password"],
-.modal-content input[type="text"] {
-    width: auto; /* Adjust width within modal */
-    max-width: none;
-    margin-top: 0;
-}
-
-.modal-content button {
-    width: 100%;
-    margin-top: 20px;
-}
-
-.modal-content p {
+/* Mensagens de erro/sucesso dentro dos modais */
+.modal-content .mensagem {
     text-align: center;
-    margin-top: 15px;
-    font-size: 0.9em;
+    margin-top: 10px;
+    font-size: 0.95em;
+    min-height: 1.2em; /* Garante que o espaço seja reservado */
+}
+
+/* Animações (Opcional, mas melhora a UX) */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
