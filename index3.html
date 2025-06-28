@@ -9,14 +9,14 @@
 <body>
     <header class="main-header">
         <div class="user-profile" id="userProfile">
-            </div>
+        </div>
     </header>
 
     <div class="container">
         <aside class="ranking-sidebar">
             <h2>Ranking Semanal</h2>
             <ul id="rankingList">
-                </ul>
+            </ul>
         </aside>
 
         <div class="game">
@@ -24,14 +24,14 @@
             <p id="challengeDate"></p>
             <img id="imagemDoJogo" src="" alt="Imagem do desafio" style="width: 400px; display: block; margin-top: 20px; margin-left: auto; margin-right: auto;">
             <div class="frame-navigation" id="frameNavigation">
-                </div>
+            </div>
             <input type="text" id="inputJogo" placeholder="Digite qual o desenho" list="suggestions">
             <datalist id="suggestions"></datalist>
             <button onclick="submitGuess()">Testar Desenho</button>
             <p id="mensagem"></p>
             <p id="remainingGuesses">Tentativas restantes: 5</p>
             <ul id="listaJogos">
-                </ul>
+            </ul>
         </div>
     </div>
 
@@ -40,14 +40,14 @@
             <span class="close-button" onclick="closeModal()">&times;</span>
             <h2>Login</h2>
             <form id="loginForm">
-                <label for="loginEmail">Email:</label>
-                <input type="email" id="loginEmail" required>
-                <label for="loginPassword">Senha:</label>
+                <label for="loginIdentifier">Email ou Nickname:</label>
+                <input type="text" id="loginIdentifier" required> <label for="loginPassword">Senha:</label>
                 <input type="password" id="loginPassword" required>
                 <button type="submit">Entrar</button>
                 <p id="loginMessage" class="mensagem erro"></p>
             </form>
             <p>Não tem uma conta? <button onclick="showRegister()">Cadastre-se</button></p>
+            <p><button class="link-button" onclick="showForgotPassword()">Esqueceu sua senha?</button></p>
         </div>
     </div>
 
@@ -56,9 +56,10 @@
             <span class="close-button" onclick="closeModal()">&times;</span>
             <h2>Cadastro</h2>
             <form id="registerForm">
-                <label for="registerName">Nome:</label>
+                <label for="registerName">Nome Completo:</label>
                 <input type="text" id="registerName" required>
-                <label for="registerEmail">Email:</label>
+                <label for="registerNickname">Nickname:</label>
+                <input type="text" id="registerNickname" required> <label for="registerEmail">Email:</label>
                 <input type="email" id="registerEmail" required>
                 <label for="registerPassword">Senha:</label>
                 <input type="password" id="registerPassword" required>
@@ -66,6 +67,52 @@
                 <p id="registerMessage" class="mensagem erro"></p>
             </form>
             <p>Já tem uma conta? <button onclick="showLogin()">Login</button></p>
+        </div>
+    </div>
+
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>Esqueceu a Senha</h2>
+            <form id="forgotPasswordForm">
+                <p>Insira seu email para redefinir a senha.</p>
+                <label for="forgotEmail">Email:</label>
+                <input type="email" id="forgotEmail" required>
+                <button type="submit">Enviar Código</button>
+                <p id="forgotMessage" class="mensagem"></p>
+            </form>
+            <p><button class="link-button" onclick="showLogin()">Voltar ao Login</button></p>
+        </div>
+    </div>
+
+    <div id="resetCodeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>Redefinir Senha</h2>
+            <form id="resetCodeForm">
+                <p>Um código foi enviado para o seu email. Insira-o abaixo.</p>
+                <label for="resetCode">Código de Confirmação:</label>
+                <input type="text" id="resetCode" required>
+                <button type="submit">Confirmar Código</button>
+                <p id="resetCodeMessage" class="mensagem"></p>
+            </form>
+            <p><button class="link-button" onclick="showForgotPassword()">Voltar</button></p>
+        </div>
+    </div>
+
+    <div id="newPasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>Definir Nova Senha</h2>
+            <form id="newPasswordForm">
+                <label for="newPassword">Nova Senha:</label>
+                <input type="password" id="newPassword" required>
+                <label for="confirmNewPassword">Repetir Nova Senha:</label>
+                <input type="password" id="confirmNewPassword" required>
+                <button type="submit">Salvar Nova Senha</button>
+                <p id="newPasswordMessage" class="mensagem"></p>
+            </form>
+            <p><button class="link-button" onclick="showLogin()">Voltar ao Login</button></p>
         </div>
     </div>
 
